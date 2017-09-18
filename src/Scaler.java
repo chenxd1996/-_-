@@ -4,25 +4,15 @@ public class Scaler {
     public static BufferedImage scale(BufferedImage img, int target_width, int target_height) {
         int width = img.getWidth();
         int height = img.getHeight();
-        /*float width_factor =  target_width / width;
-        float heigh_factor = target_height / height;*/
         BufferedImage newImg = new BufferedImage(target_width, target_height, BufferedImage.TYPE_INT_RGB);
         for (int i = 0; i < target_width; i++) {
             for (int j = 0; j < target_height; j++) {
                 float x = ((float) i / target_width) * width;
-                //System.out.println(x);
                 float y = ((float)j / target_height) * height;
                 int x1 = (int)Math.floor(x);
                 int x2 = (int)Math.ceil(x) < width? (int)Math.ceil(x): width - 1;
                 int y1 = (int) Math.floor(y);
                 int y2 = (int) Math.ceil(y) < height? (int)Math.ceil(y): height - 1;
-                /*float x = ((float)i / width) * width;
-                float y = ((float)j / height) * height;
-                newImg.setRGB(i, j, img.getRGB(i, j));
-                System.out.println(x);
-                System.out.println(y);
-                System.out.println(i);
-                System.out.println(j);*/
                 RGB rgb11 = new RGB(img.getRGB(x1, y1));
                 RGB rgb12 = new RGB(img.getRGB(x1, y2));
                 RGB rgb21 = new RGB(img.getRGB(x2, y1));
